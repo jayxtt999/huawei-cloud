@@ -1,0 +1,18 @@
+{
+    "name": "junqing124/huawei-cloud",
+    "description": "非官方Huawei SDK",
+    "authors": [
+        {
+            "name": "HuanJun Huang"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "HuaWeiCloud\\": "src"
+        }
+    }
+}
