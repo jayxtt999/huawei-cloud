@@ -7,9 +7,9 @@ namespace HuaWeiCloud\Common\v20200320;
  * Class ListEndpoint
  * @package Common\v20200320
  */
-class ListEndpoint
+class ListEndpoint extends Base
 {
-    public function getEsc()
+    public function action()
     {
         $list = array(
             'cn-northeast-1'=> array('key'=>'cn-northeast-1', 'name' => '东北-大连', 'protocol' => 'https'),

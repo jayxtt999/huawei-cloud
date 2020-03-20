@@ -4,7 +4,7 @@ namespace HuaWeiCloud\Esc\v20200320;
 
 use HuaWeiCloud\Common\v20200320\Base;
 
-class Start extends Base
+class Stop extends Base
 {
     public function action()
     {
@@ -12,7 +12,7 @@ class Start extends Base
         $endpoint = $this->getEndpoint();
         $url = "https://ecs.{$endpoint}.myhuaweicloud.cn/v1/{$projectId}/cloudservers/action";
         $data = array(
-            'os-start' => array(
+            'os-stop' => array(
                 'type' => 'SOFT',
                 'servers' => array(array('id' => $this->getServerId())),
             ),

@@ -6,10 +6,33 @@ use HuaWeiCloud\Core\v20200320\Signer;
 use HuaWeiCloud\Core\v20200320\Request;
 use HuaWeiCloud\Common\v20200320\Profile;
 
-class Base
+abstract class Base
 {
     protected $endpoint = '';
     protected $projectId = '';
+    protected $serverId = ''; //服务器id
+
+    /**
+     * @return string
+     */
+    public function getServerId()
+    {
+        return $this->serverId;
+    }
+
+    /**
+     * @param string $serverId
+     */
+    public function setServerId($serverId)
+    {
+        $this->serverId = $serverId;
+    }
+
+    /**
+     * 操作
+     * @return mixed
+     */
+    public abstract function action();
 
     /**
      * @return string
@@ -55,7 +78,7 @@ class Base
         return $object;
     }
 
-    public function request($url, $type = 'GET', $body = '')
+    public function request($url, $type = 'GET', $data = array())
     {
 
         $signer = new Signer();
@@ -67,12 +90,17 @@ class Base
         $req->headers = array(
             'content-type' => 'application/json',
         );
+        if ($data) {
+            $body = json_encode($data);
+        } else {
+            $body = '';
+        }
         $req->body = $body;
         $curl = $signer->Sign($req);
         $response = curl_exec($curl);
         $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         if ($status != 200) {
-            throw new \Exception('获取远程资源失败');
+            throw new \Exception('获取远程资源失败,code是:' . $status . ',url是:' . $url);
         }
         curl_close($curl);
         $response = json_decode($response);
