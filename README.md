@@ -1,3 +1,6 @@
+安装方式:  
+composer require junqing124/huawei-cloud  
+
 非官方项目，主要用于对华为云的基本管理，实现原理是对其url组装程序封装好,如果想实现华为云的其它功能可以看案例Esc\v20200320\Reboot.php,官方文档是：https://support.huaweicloud.com/api-ecs/ecs_02_0302.html  
 
 华为云的凭证请在后台:  
