@@ -100,7 +100,9 @@ abstract class Base
         $response = curl_exec($curl);
         $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         if ($status != 200) {
-            throw new \Exception('获取远程资源失败,code是:' . $status . ',url是:' . $url);
+            //这里不throw是因为外面有foreach 不想断foreach
+            echo '获取远程资源失败,code是:' . $status . ',url是:' . $url . '<br>';
+            //throw new \Exception('获取远程资源失败,code是:' . $status . ',url是:' . $url);
         }
         curl_close($curl);
         $response = json_decode($response);

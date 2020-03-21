@@ -14,25 +14,28 @@ Common\Profile::setKey($key);
 Common\Profile::setSecret($secret);
 
 //请用ListEcs获取的数据存下来后有这三个字段
-$endpoint = '**';
-$projectId = '**';
-$serverId = '**';
+$endpoint = 'cn-east-2';
+$projectId = '080cf108198026be2f20c01402057a45';
+$serverId = '3a05ed27-ecfd-4bf2-901b-a4e5c58038d1';
 
 //获取所有的esc
 $type = $_GET['type'] ? $_GET['type'] : 'Reboot';
 switch ($type) {
     case 'Reboot':
-        $escOption = new Ecs\Reboot();
+        $clsEscOption = new Ecs\Reboot();
         break;
     case 'Start':
-        $escOption = new Ecs\Start();
+        $clsEscOption = new Ecs\Start();
         break;
     case 'Stop':
-        $escOption = new Ecs\Stop();
+        $clsEscOption = new Ecs\Stop();
+        break;
+    case 'Detail':
+        $clsEscOption = new Ecs\Detail();
         break;
 }
-$escOption->setEndpoint($endpoint);
-$escOption->setProjectId($projectId);
-$escOption->setServerId($serverId);
-$response = $escOption->action();
+$clsEscOption->setEndpoint($endpoint);
+$clsEscOption->setProjectId($projectId);
+$clsEscOption->setServerId($serverId);
+$response = $clsEscOption->action();
 print_r($response);
