@@ -6,7 +6,7 @@ composer require junqing124/huawei-cloud
 华为云的凭证请在后台:  
 我的凭证->访问密码，然后新增访问密钥  
 后面会有个csv下载下来，里面有Access Key Id和Secret Access Key。  
-本案例中请在example目录下，新建config.php,然后配置如下内容即可：  
+本案例中请在example目录下，新建config.php,然后根据自己的key配置如下内容即可：  
 ```
 <?php  
 $key = 'RB7MOJ4IMHKPTQLJB55S';  

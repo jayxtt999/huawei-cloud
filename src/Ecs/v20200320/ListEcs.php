@@ -1,9 +1,9 @@
 <?php
 
-namespace HuaWeiCloud\Esc\v20200320;
+namespace HuaWeiCloud\Ecs\v20200320;
 
 use HuaWeiCloud\Common\v20200320\Base;
-class ListEsc extends Base
+class ListEcs extends Base
 {
     public function action()
     {

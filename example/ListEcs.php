@@ -3,7 +3,7 @@ require_once __DIR__ . '\..\vendor\autoload.php';
 require_once 'config.php';
 
 use HuaWeiCloud\Common\v20200320 as Common;
-use HuaWeiCloud\Esc\v20200320 as Esc;
+use HuaWeiCloud\Ecs\v20200320 as Ecs;
 
 //配置
 Common\Profile::setKey($key);
@@ -13,7 +13,7 @@ Common\Profile::setSecret($secret);
 $endpoint = new Common\ListEndpoint();
 $endpointList = $endpoint->action();
 $project = new Common\ListProject();
-$listEsc = new Esc\ListEsc();
+$listEcs = new Ecs\ListEcs();
 echo '<pre>';
 foreach ($endpointList as $endpoint => $endpointDetail) {
     echo 'endpoint is:' . $endpoint . '<br>';
@@ -26,9 +26,9 @@ foreach ($endpointList as $endpoint => $endpointDetail) {
 
         $projectId = $project['id'];
         echo 'project id is:' . $projectId . '<br>';
-        $listEsc->setEndpoint($endpoint);
-        $listEsc->setProjectId($projectId);
-        $escList = $listEsc->action();
+        $listEcs->setEndpoint($endpoint);
+        $listEcs->setProjectId($projectId);
+        $escList = $listEcs->action();
         print_r($escList);
     }
 }

@@ -7,13 +7,13 @@ require_once __DIR__ . '\..\vendor\autoload.php';
 require_once 'config.php';
 
 use HuaWeiCloud\Common\v20200320 as Common;
-use HuaWeiCloud\Esc\v20200320 as Esc;
+use HuaWeiCloud\Ecs\v20200320 as Ecs;
 
 //配置
 Common\Profile::setKey($key);
 Common\Profile::setSecret($secret);
 
-//请用ListEsc获取的数据存下来后有这三个字段
+//请用ListEcs获取的数据存下来后有这三个字段
 $endpoint = '**';
 $projectId = '**';
 $serverId = '**';
@@ -22,13 +22,13 @@ $serverId = '**';
 $type = $_GET['type'] ? $_GET['type'] : 'Reboot';
 switch ($type) {
     case 'Reboot':
-        $escOption = new Esc\Reboot();
+        $escOption = new Ecs\Reboot();
         break;
     case 'Start':
-        $escOption = new Esc\Start();
+        $escOption = new Ecs\Start();
         break;
     case 'Stop':
-        $escOption = new Esc\Stop();
+        $escOption = new Ecs\Stop();
         break;
 }
 $escOption->setEndpoint($endpoint);

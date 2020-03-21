@@ -25,9 +25,6 @@ class ListEndpoint extends Base
             'ap-southeast-1'=> array('key'=>'ap-southeast-1', 'name' => '亚太-香港', 'protocol' => 'https'),
             'ap-southeast-3'=> array('key'=>'ap-southeast-3', 'name' => '亚太-新加坡', 'protocol' => 'https'),
         );
-        $list = array(
-            'cn-east-2'=> array('key'=>'cn-east-2', 'name' => '华东-上海二', 'protocol' => 'https'),
-        );
         return $list;
     }
 }
