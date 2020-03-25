@@ -8,6 +8,7 @@ require_once 'config.php';
 
 use HuaWeiCloud\Common\v20200320 as Common;
 use HuaWeiCloud\Ecs\v20200320 as Ecs;
+use HuaWeiCloud\Common\v20200320\Base;
 
 //配置
 Common\Profile::setKey($key);
