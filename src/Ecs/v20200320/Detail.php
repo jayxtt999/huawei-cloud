@@ -7,9 +7,9 @@ class Detail extends Base
 {
     public function action()
     {
-        $projectId = $this->getProjectId();
-        $endpoint = $this->getEndpoint();
-        $serverId = $this->getServerId();
+        $projectId = Base::getProjectId();
+        $endpoint = Base::getEndpoint();
+        $serverId = Base::getServerId();
         $url = "https://ecs.{$endpoint}.myhuaweicloud.cn/v1/{$projectId}/cloudservers/{$serverId}";
         return $this->request($url, 'GET');
     }

@@ -4,6 +4,7 @@ require_once 'config.php';
 
 use HuaWeiCloud\Common\v20200320 as Common;
 use HuaWeiCloud\Ecs\v20200320 as Ecs;
+use HuaWeiCloud\Common\v20200320\Base;
 
 //配置
 Common\Profile::setKey($key);
@@ -15,10 +16,11 @@ $endpointList = $clsEndpoint->action();
 $clsListProject = new Common\ListProject();
 $clsListEcs = new Ecs\ListEcs();
 $clsDetailEsc = new Ecs\Detail();
+$clsResourceDetail = new Common\ResourcesDetail();
 echo '<pre>';
 foreach ($endpointList as $endpoint => $endpointDetail) {
     echo 'endpoint is:' . $endpoint . '<br>';
-    $clsListProject->setEndpoint($endpoint);
+    Base::setEndpoint($endpoint);
     $projectList = $clsListProject->action();
     if ($projectList['projects']) {
         foreach ($projectList['projects'] as $project) {
@@ -27,18 +29,19 @@ foreach ($endpointList as $endpoint => $endpointDetail) {
             }
             $projectId = $project['id'];
             echo 'project id is:' . $projectId . '<br>';
-            $clsListEcs->setEndpoint($endpoint);
-            $clsListEcs->setProjectId($projectId);
+            Base::setProjectId($projectId);
             $escList = $clsListEcs->action();
             if( $escList['count'] > 0 ){
                 foreach( $escList['servers'] as $serverDetail ){
                     $serverId = $serverDetail['id'];
-                    $clsDetailEsc->setEndpoint($endpoint);
-                    $clsDetailEsc->setProjectId($projectId);
-                    $clsDetailEsc->setServerId($serverId);
+                    Base::setServerId($serverId);
                     //获取每个服务器的详情
                     $infoEsc = $clsDetailEsc->action();
+                    //获取过期时间
+                    Base::setCustomerId($customerId);
+                    $infoResource = $clsResourceDetail->action();
                     print_r($infoEsc);
+                    print_r($infoResource);
                 }
             }
             //服务器列表

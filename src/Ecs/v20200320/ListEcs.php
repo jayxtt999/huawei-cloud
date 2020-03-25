@@ -7,8 +7,8 @@ class ListEcs extends Base
 {
     public function action()
     {
-        $projectId = $this->getProjectId();
-        $endpoint = $this->getEndpoint();
+        $projectId = Base::getProjectId();
+        $endpoint = Base::getEndpoint();
         $url = "https://ecs.{$endpoint}.myhuaweicloud.cn/v1/{$projectId}/cloudservers/detail?offset=1&limit=1000";
         return $this->request($url, 'GET');
     }

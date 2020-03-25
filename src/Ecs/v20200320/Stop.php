@@ -8,13 +8,13 @@ class Stop extends Base
 {
     public function action()
     {
-        $projectId = $this->getProjectId();
-        $endpoint = $this->getEndpoint();
+        $projectId = Base::getProjectId();
+        $endpoint = Base::getEndpoint();
         $url = "https://ecs.{$endpoint}.myhuaweicloud.cn/v1/{$projectId}/cloudservers/action";
         $data = array(
             'os-stop' => array(
                 'type' => 'SOFT',
-                'servers' => array(array('id' => $this->getServerId())),
+                'servers' => array(array('id' => Base::getServerId())),
             ),
         );
         return $this->request($url, 'POST', $data);

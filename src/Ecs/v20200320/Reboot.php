@@ -8,8 +8,8 @@ class Reboot extends Base
 {
     public function action()
     {
-        $projectId = $this->getProjectId();
-        $endpoint = $this->getEndpoint();
+        $projectId = Base::getProjectId();
+        $endpoint = Base::getEndpoint();
         $url = "https://ecs.{$endpoint}.myhuaweicloud.cn/v1/{$projectId}/cloudservers/action";
         $data = array(
             'reboot' => array(

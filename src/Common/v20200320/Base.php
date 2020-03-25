@@ -8,59 +8,73 @@ use HuaWeiCloud\Common\v20200320\Profile;
 
 abstract class Base
 {
-    protected $endpoint = '';
-    protected $projectId = '';
-    protected $serverId = ''; //服务器id
+    protected static $endpoint = '';
+    protected static $projectId = '';
+    protected static $serverId = ''; //服务器id
+    protected static $customerId = '';
 
     /**
      * @return string
      */
-    public function getServerId()
+    public static function getEndpoint()
     {
-        return $this->serverId;
+        return self::$endpoint;
     }
 
     /**
-     * @param string $serverId
+     * @param string $endpoint
      */
-    public function setServerId($serverId)
+    public static function setEndpoint($endpoint)
     {
-        $this->serverId = $serverId;
+        self::$endpoint = $endpoint;
     }
-
-    /**
-     * 操作
-     * @return mixed
-     */
-    public abstract function action();
 
     /**
      * @return string
      */
-    public function getProjectId()
+    public static function getProjectId()
     {
-        return $this->projectId;
+        return self::$projectId;
     }
 
     /**
      * @param string $projectId
      */
-    public function setProjectId($projectId)
+    public static function setProjectId($projectId)
     {
-        $this->projectId = $projectId;
-    }
-
-    public function setEndpoint($endpoint)
-    {
-        $this->endpoint = $endpoint;
+        self::$projectId = $projectId;
     }
 
     /**
      * @return string
      */
-    public function getEndpoint()
+    public static function getServerId()
     {
-        return $this->endpoint;
+        return self::$serverId;
+    }
+
+    /**
+     * @param string $serverId
+     */
+    public static function setServerId($serverId)
+    {
+        self::$serverId = $serverId;
+    }
+
+    /**
+     * @return string
+     */
+    public static function getCustomerId()
+    {
+        return self::$customerId;
+    }
+
+    /**
+     * @param string $customerId
+     */
+    public static function setCustomerId($customerId)
+    {
+        self::$customerId = $customerId;
     }
 
     public function objectToArray($object)
@@ -99,9 +113,10 @@ abstract class Base
         $curl = $signer->Sign($req);
         $response = curl_exec($curl);
         $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $newLine = 'cli' == php_sapi_name() ? "\r\n" : '<br>';
         if ($status != 200) {
             //这里不throw是因为外面有foreach 不想断foreach
-            echo '获取远程资源失败,code是:' . $status . ',url是:' . $url . '<br>';
+            echo '获取远程资源失败,code是:' . $status . ',url是:' . $url . $newLine;
             //throw new \Exception('获取远程资源失败,code是:' . $status . ',url是:' . $url);
         }
         curl_close($curl);

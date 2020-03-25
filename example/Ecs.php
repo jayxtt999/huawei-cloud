@@ -34,8 +34,8 @@ switch ($type) {
         $clsEscOption = new Ecs\Detail();
         break;
 }
-$clsEscOption->setEndpoint($endpoint);
-$clsEscOption->setProjectId($projectId);
-$clsEscOption->setServerId($serverId);
+Base::setEndpoint($endpoint);
+Base::setProjectId($projectId);
+Base::setServerId($serverId);
 $response = $clsEscOption->action();
 print_r($response);

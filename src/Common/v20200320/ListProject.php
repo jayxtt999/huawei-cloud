@@ -5,7 +5,7 @@ class ListProject extends Base
 {
     public function action()
     {
-        $endpoint = $this->getEndpoint();
+        $endpoint = Base::getEndpoint();
         $url = "https://ecs.{$endpoint}.myhuaweicloud.com/v3/projects";
         return $this->request($url, 'GET');
     }
