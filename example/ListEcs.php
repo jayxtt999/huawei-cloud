@@ -14,6 +14,7 @@ Common\Profile::setSecret($secret);
 $clsEndpoint = new Common\ListEndpoint();
 $endpointList = $clsEndpoint->action();
 $clsListProject = new Common\ListProject();
+$projectList = $clsListProject->action();
 $clsListEcs = new Ecs\ListEcs();
 $clsDetailEsc = new Ecs\Detail();
 $clsResourceDetail = new Common\ResourcesDetail();
@@ -21,7 +22,6 @@ echo '<pre>';
 foreach ($endpointList as $endpoint => $endpointDetail) {
     echo 'endpoint is:' . $endpoint . '<br>';
     Base::setEndpoint($endpoint);
-    $projectList = $clsListProject->action();
     if ($projectList['projects']) {
         foreach ($projectList['projects'] as $project) {
             if ($endpoint != $project['name']) {
