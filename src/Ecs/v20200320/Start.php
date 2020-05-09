@@ -3,8 +3,9 @@
 namespace HuaWeiCloud\Ecs\v20200320;
 
 use HuaWeiCloud\Common\v20200320\Base;
+use HuaWeiCloud\Common\v20200320\Common;
 
-class Start extends Base
+class Start extends Base implements Common
 {
     public function action()
     {

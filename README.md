@@ -6,6 +6,7 @@ composer require junqing124/huawei-cloud
 开发规则:  
 1、包名请以华为的资源名首字母大写为包名，其它为小写,如果碰上空格或其它特殊字符直接去除，如操作管理esc的则包名为Esc,Cloud Eye则包名为CloudEye  
 2、包版本以日期为准则，如果官方API版本升级，则新起个日期做更新，否则直接更新当前的包[v20200320]。号外：为啥不用华为api里的版本号，因为发现版本号比较放飞自我，有v1.0[support.huaweicloud.com/api-ces/ces_03_0023.html]、v2[support.huaweicloud.com/api-ecs/ecs_02_0201.html]、v3[support.huaweicloud.com/api-rds/rds_06_0001.html]、v1[support.huaweicloud.com/api-ecs/ecs_02_0203.html]等，故直接用日期做本SDK的版本号  
+3、所有的动作都是一个类，设置好成员属性后，用action调用  
 
 基本配置获取:  
 1、Customer Id:  
@@ -13,6 +14,9 @@ API凭证->账号ID
 2、key和secret获取:  
 我的凭证->访问密码，然后新增访问密钥  
 后面会有个csv下载下来，里面有Access Key Id和Secret Access Key。  
+
+PrivateNumberAX的信息获取:https://console.huaweicloud.com/privatenumber/?agencyId=4331785abebd4d1294f6350fb53ecdc3&region=cn-north-1&locale=zh-cn#/management/appmanagement/  
+
 本案例中请在example目录下，新建config.php,然后根据自己的key配置如下内容即可：  
 ```
 <?php  
@@ -20,6 +24,8 @@ $customerId = '***';
 $key = '***';  
 $secret = '***';
 ```  
+1.0.3(2020-05-09):  
+1、增加对PrivateNumber的AX模式的支持:绑定虚拟电话号码和真实电话号码  
 
 1.0.2(2020-03-25):  
 1、获取资源过期时间  

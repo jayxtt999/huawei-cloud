@@ -1,7 +1,13 @@
 <?php
 
 namespace HuaWeiCloud\Common\v20200320;
-class ListProject extends Base
+
+/**
+ * 获取华为云的project列表
+ * Class ListProject
+ * @package HuaWeiCloud\Common\v20200320
+ */
+class ListProject extends Base implements Common
 {
     public function action()
     {

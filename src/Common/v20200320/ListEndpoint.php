@@ -7,7 +7,7 @@ namespace HuaWeiCloud\Common\v20200320;
  * Class ListEndpoint
  * @package Common\v20200320
  */
-class ListEndpoint extends Base
+class ListEndpoint extends Base implements Common
 {
     public function action()
     {

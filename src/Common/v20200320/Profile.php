@@ -3,8 +3,8 @@
 namespace HuaWeiCloud\Common\v20200320;
 
 /**
- * 基础类
- * Class Base
+ * 配置类
+ * Class Profile
  * @package Common\v20200320
  */
 class Profile

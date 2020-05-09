@@ -1,7 +1,13 @@
 <?php
 
 namespace HuaWeiCloud\Common\v20200320;
-class ResourcesDetail extends Base
+
+/**
+ * 包资源的详情，比如esc的过期时间
+ * Class ResourcesDetail
+ * @package HuaWeiCloud\Common\v20200320
+ */
+class ResourcesDetail extends Base implements Common
 {
     public function action()
     {
